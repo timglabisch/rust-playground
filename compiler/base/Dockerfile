@@ -12,13 +12,14 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     pkg-config \
     python \
+    sudo \
  && rm -rf /var/lib/apt/lists/*
 
-ENV USER=root
-ENV PATH=/root/.cargo/bin:$PATH
-
-ADD entrypoint.sh /root/
-ENTRYPOINT ["/root/entrypoint.sh"]
+RUN useradd -m playground -d /playground
+RUN usermod -p '!!' root # Disable all passwords for root
+USER playground
+ENV USER=playground
+ENV PATH=/playground/.cargo/bin:$PATH
 
 ARG channel
 
@@ -26,13 +27,14 @@ ARG channel
 # latest version of the current channel. A new manifest will trigger
 # these lines to run again, forcing a new download of rustup and
 # installation of Rust.
-ADD https://static.rust-lang.org/rustup/release-stable.toml /root/rustup-manifest.toml
-ADD https://static.rust-lang.org/dist/channel-rust-${channel}-date.txt /root/rust-channel-version
+ADD https://static.rust-lang.org/rustup/release-stable.toml /playground/tools/rustup-manifest.toml
+ADD https://static.rust-lang.org/dist/channel-rust-${channel}-date.txt /playground/tools/rust-channel-version
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain "${channel}"
 
-RUN cd / && \
-    cargo new playground
+RUN cd /tmp && \
+    cargo new playground && \
+    mv /tmp/playground/* /playground/
 WORKDIR /playground
 
 RUN mv Cargo.toml Cargo.toml.original
@@ -43,6 +45,11 @@ RUN rm src/*.rs
 
 ADD crate-information.json /playground/crate-information.json
 
-ADD postinstall.sh /root/
-RUN /root/postinstall.sh ${channel}
-ADD cargo-wasm /root/.cargo/bin/
+ADD postinstall.sh /playground/tools/
+RUN /playground/tools/postinstall.sh ${channel}
+ADD cargo-wasm /playground/.cargo/bin/
+
+# We drop root privileges in the entrypoint
+USER root
+ADD entrypoint.sh /playground/tools/
+ENTRYPOINT ["/playground/tools/entrypoint.sh"]

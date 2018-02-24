@@ -332,7 +332,9 @@ fn basic_secure_docker_command() -> Command {
         .arg("run")
         .arg("--rm")
         .arg("--cap-drop=ALL")
-        .arg("--cap-add=DAC_OVERRIDE")
+        // SETUID and SETGID are needed for `sudo`
+        .arg("--cap-add=SETUID")
+        .arg("--cap-add=SETGID")
         .arg("--security-opt=no-new-privileges")
         .args(&["--workdir", "/playground"])
         .args(&["--net", "none"])
