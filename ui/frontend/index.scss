@@ -557,3 +557,38 @@ $PHI: 2.61803398875;
     margin: $arrow-size;
   }
 }
+
+.build-options {
+  width: 20em;
+
+  &__title {
+    font-size: medium;
+    padding: 0.5em;
+    margin: 0;
+    border-bottom: 1px solid #CCC;
+  }
+}
+
+.build-option {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5em;
+
+  // Button reset
+  border: none;
+  text-align: inherit;
+  width: inherit;
+
+  &:hover {
+    background-color: aliceblue;
+  }
+
+  &__name {
+    font-weight: bold;
+    margin-bottom: 0.25em;
+  }
+
+  &__description {
+    font-size: 90%;
+  }
+}
