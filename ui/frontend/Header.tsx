@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PopButton from './PopButton';
+import PopButton, { PopButtonEnhancements} from './PopButton';
 import Link from './uss-router/Link';
 
 import {
@@ -184,9 +184,47 @@ const Header2 = () => (
   <div className="header2">
     <button>BUILD</button>
     <PopButton text="...">
-      Content would go here!
+      {props => <BuildMenu {...props} />}
     </PopButton>
   </div>
+);
+
+const BuildMenu: React.SFC<PopButtonEnhancements> = ({ popButtonClose }) => (
+  <div className="build-options">
+    <h1 className="build-options__title">What do you want to do?</h1>
+    <BuildOption
+        onClick={popButtonClose}
+      name="Build"
+      description="No bells and whistles, regular build coming right up :D"
+    />
+    <BuildOption
+        onClick={popButtonClose}      name="ASM"
+      description="Build and show the resulting assembly code."
+    />
+    <BuildOption
+            onClick={popButtonClose}
+      name="LLVM IR"
+      description="Build and show the resulting LLVM IR, LLVM's intermediate representation."
+    />
+    <BuildOption
+            onClick={popButtonClose}
+      name="MIR"
+      description="Build and show the resulting MIR, Rust's intermediate representation."
+    />
+    <BuildOption
+            onClick={popButtonClose}
+      name="WASM"
+      description="Build a WebAssembly module for web browsers, in the .WAT textual representation.
+        Note: WASM currently requires using the Nightly channel, selecting this option will switch to Nightly."
+    />
+    </div>
+);
+
+const BuildOption = ({name, description, onClick}) => (
+  <button onClick={onClick} className="build-option">
+    <span className="build-option__name">{name}</span>
+    <span className="build-option__description">{description}</span>
+  </button>
 );
 
 const mapStateToProps = (state: State) => {
