@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PopButton from './PopButton';
 import Link from './uss-router/Link';
 
 import {
@@ -178,6 +179,16 @@ interface HeaderProps {
   wasmAvailable: boolean;
 }
 
+// TODO: Rename and remove existing header when rebasing
+const Header2 = () => (
+  <div className="header2">
+    <button>BUILD</button>
+    <PopButton text="...">
+      Content would go here!
+    </PopButton>
+  </div>
+);
+
 const mapStateToProps = (state: State) => {
   const { configuration: { channel, mode } } = state;
 
@@ -211,6 +222,6 @@ const mapDispatchToProps = ({
 const ConnectedHeader = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Header);
+)(Header2);
 
 export default ConnectedHeader;
