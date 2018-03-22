@@ -30,6 +30,7 @@ module.exports = function(_, argv) {
         developmentFilenameTemplate;
 
   return {
+    cache: false,
     entry: {
       app: ['./index.tsx', './index.scss'],
     },
