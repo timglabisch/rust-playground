@@ -608,19 +608,19 @@ $PHI: 2.61803398875;
   &.options-notify {
     &::before {
       content: "";
-    
+
       top: calc(50% - 6px);
       left: calc(50% - 11px);
       width: 22px;
       height: 12px;
-      
+
       position: absolute;
-    
+
       border-radius: 3px;
       background: #428bca;
       opacity: 0.8;
     }
-  
+
     .icon {
       color: #fff;
       opacity: 1 !important;
@@ -646,37 +646,37 @@ $PHI: 2.61803398875;
     border-right-width: 0;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
-  
+
     position: relative;
   }
 
   .segmented-button-options {
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
-  
+
     position: relative;
-  
+
     background-color: #fff;
     border-left: 1px solid #dedede;
   }
-} 
+}
 
 .button-build-container {
   border: none;
 
   .button-build {
     font-weight: 700;
-  
+
     background: $rust;
     color: white;
-  
+
     margin-top: -1px;
     margin-bottom: -1px;
     height: 37px;
-  
+
     border: 1px solid hsl(15, 66.7%, 32%);
     border-right-width: 0;
-    
+
     padding-right: 30px;
     padding-left: 10px;
 
@@ -693,15 +693,15 @@ $PHI: 2.61803398875;
     margin-top: -1px;
     margin-bottom: -1px;
     height: 37px;
-  
+
     border: 1px solid #dedede;
     border-bottom: 1px solid #bdbdbd;
     border-left-width: 0;
   }
-  
+
   .header-button:hover .icon-play {
     opacity: 1;
-  }  
+  }
 }
 
 .popper {
@@ -727,7 +727,7 @@ $PHI: 2.61803398875;
   &__content {
     background: $bg-color;
     color: $fg-color;
-    
+
     margin: $arrow-size;
 
     border-radius: 3px;
@@ -736,7 +736,7 @@ $PHI: 2.61803398875;
 
     border-left: 1px solid #cacaca;
     border-right: 1px solid #cacaca;
-    border-bottom: 1px solid #bdbdbd;    
+    border-bottom: 1px solid #bdbdbd;
   }
 
   button:enabled {
@@ -763,25 +763,25 @@ $PHI: 2.61803398875;
   &.group-validate-options {
     margin-top: 5px;
     margin-bottom: 0 !important;
-  
+
     padding-top: 10px;
     padding-bottom: 13px;
-  
+
     background: #f4f4f4;
-  
+
     border-top: 1px solid #cacaca;
-  
+
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
-  
+
     text-align: center;
 
     button {
       display: inline-block;
-    
+
       text-align: center;
       text-decoration: none;
-    
+
       text-transform: uppercase;
       font-weight: 600;
 
@@ -805,7 +805,7 @@ $PHI: 2.61803398875;
       &:active {
         background: linear-gradient(#f9f9f9, #ededed);
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-      
+
         border-top-color: #bababa;
         border-bottom-color: #d6d6d6;
       }
@@ -877,10 +877,10 @@ $PHI: 2.61803398875;
 
   .icon-checkmark {
     margin: 0 5px 0 5px;
-  
+
     top: -2px;
     right: 0;
-  
+
     opacity: 0;
     transition: opacity 0.2s ease-in-out;
   }
@@ -909,47 +909,47 @@ $PHI: 2.61803398875;
       .popover-item__name {
         font-weight: 400;
       }
-  
+
       > * {
         flex: 1 1 100%;
       }
     }
-  
+
     .popover-toggle {
-      display: flex;      
+      display: flex;
 
       max-width: 110px;
       margin-right: 5px;
 
       text-align: center;
       background: #fff;
-  
+
       input {
         display: none;
       }
-  
+
       label {
         flex: 1;
-        
+
         text-transform: uppercase;
         font-size: 11px;
         font-weight: 600;
         color: #777;
-  
+
         cursor: pointer;
 
         border: 1px solid #bbb;
         border-top-left-radius: 3px;
         border-bottom-left-radius: 3px;
         border-right-width: 0;
-  
+
         ~ label {
           border-right-width: 1px;
           border-left: 1px solid #bbb;
-          border-radius: 0 3px 3px 0;          
+          border-radius: 0 3px 3px 0;
         }
       }
-  
+
       :checked + label {
         border-color: #428bca;
         background: #428bca;
@@ -982,13 +982,13 @@ $PHI: 2.61803398875;
 
   kbd {
     font-family: "Source Code Pro";
-  
+
     margin: 0 5px;
-  
+
     border: 1px solid #dedede;
     border-radius: 4px;
     padding: 0.1em 0.5em;
-  
+
     box-shadow: 0 1px 0px rgba(0, 0, 0, 0.1), 0 0 0 2px #fff inset;
     background-color: #fafafa;
     color: #888;

@@ -183,12 +183,12 @@ interface HeaderProps {
 
 // Header buttons are of three types: regular header button that is a UI action, PopButton (expandable) whose action triggers
 // showing a Popover, segmented buttons which are conceptually two buttons stuck together (a "main" one triggering
-// an action or showing a Popover, and an "options" one usually showing a Popover). 
+// an action or showing a Popover, and an "options" one usually showing a Popover).
 
 // Popovers contain one or more PopoverGroups. A PopoverGroup contains PopoverItems.
 // A PopoverItem is a name and description, a user can interact with, generating an action of some kind.
 // There are conceptually two types of PopoverGroups: stateless, and stateful. The stateful PopoverGroups behave like
-// radio buttons, remembering which of their "selectable" PopoverItems is currently selected. 
+// radio buttons, remembering which of their "selectable" PopoverItems is currently selected.
 // There are three types of PopoverItems: simple actions, the "selectable" actions (ones with a 'selected' UI state,
 // used inside "radio button" PopoverGroups), and actions that can also be triggered via a keyboard shortcut (so they
 // have additional information and behavior in the UI)
