@@ -193,38 +193,42 @@ interface HeaderProps {
 // used inside "radio button" PopoverGroups), and actions that can also be triggered via a keyboard shortcut (so they
 // have additional information and behavior in the UI)
 
-const Header2 = () => {
-  const buildIcon = (
-    <svg className="icon icon-play" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 5v14l11-7z"/>
-        <path d="M0 0h24v24H0z" fill="none"/>
-    </svg>
-  );
-  const expandableIcon = (
-    <svg className="icon icon-expandable" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
-        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
-        <path d="M0 0h24v24H0z" fill="none"/>
-    </svg>
-  );
-  const moreOptionsIcon = (
-    <svg className="icon icon-more" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0h24v24H0z" fill="none"/>
-        <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
-    </svg>
-  );
-  const configIcon = (
-    <svg className="icon icon-settings" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg">
+const BuildIcon = () => (
+  <svg className="icon icon-play" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 5v14l11-7z"/>
       <path d="M0 0h24v24H0z" fill="none"/>
-      <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
-    </svg>
-  );
-  const helpIcon = (
-    <svg className="icon icon-help" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 0h24v24H0z" fill="none"/>
-        <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
-    </svg>
-  );
+  </svg>
+);
 
+const ExpandableIcon = () => (
+  <svg className="icon icon-expandable" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/>
+      <path d="M0 0h24v24H0z" fill="none"/>
+  </svg>
+);
+
+const MoreOptionsIcon = () => (
+  <svg className="icon icon-more" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+  </svg>
+);
+
+const ConfigIcon = () => (
+  <svg className="icon icon-settings" height="15" viewBox="0 0 24 24" width="15" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+  </svg>
+);
+
+const HelpIcon = () => (
+  <svg className="icon icon-help" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 0h24v24H0z" fill="none"/>
+      <path d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"/>
+  </svg>
+);
+
+const Header2 = () => {
   const hasFlags = false;
   const advancedOptionsTooltip = hasFlags ? "Show the configured compilation flags" : "Advanced compilation flags";
   let advancedOptionsClassName = "header-button segmented-button-options" ;
@@ -237,41 +241,41 @@ const Header2 = () => {
     <div className="header-button-container segmented-button-container button-build-container">
       <button className="header-button segmented-button button-build">
         Build
-        {buildIcon}
+        <BuildIcon />
       </button>
-      <PopButton icon={moreOptionsIcon} className="header-button segmented-button-options" title="Select what to build">
+      <PopButton icon={<MoreOptionsIcon/>} className="header-button segmented-button-options" title="Select what to build">
         <BuildMenu />
       </PopButton>
     </div>
     <div className="header-button-container segmented-button-container">
       <PopButton
         text="Options : Debug / Stable"
-        icon={expandableIcon}
+        icon={<ExpandableIcon/>}
         className="header-button segmented-button button-expandable"
         title="Rust version and optimization options">
         <ModeChannelMenu />
       </PopButton>
-      <PopButton icon={moreOptionsIcon} className={advancedOptionsClassName} title={advancedOptionsTooltip}>
+      <PopButton icon={<MoreOptionsIcon/>} className={advancedOptionsClassName} title={advancedOptionsTooltip}>
         <AdvancedOptionsMenu />
       </PopButton>
     </div>
-    <div style={{flex: 1}}></div>
+    <div className="glue"></div>
     <div className="header-button-container">
       <button className="header-button" title="Create shareable links to this code">Share</button>
     </div>
     <div className="header-button-container">
-      <PopButton text="Tools" icon={expandableIcon} className="header-button button-expandable">
+      <PopButton text="Tools" icon={<ExpandableIcon/>} className="header-button button-expandable">
         <ToolsMenu />
       </PopButton>
     </div>
     <div className="header-button-container">
-      <PopButton text="Config" icon={configIcon} className="header-button button-settings" title="Show the configuration options">
+      <PopButton text="Config" icon={<ConfigIcon/>} className="header-button button-settings" title="Show the configuration options">
         <ConfigMenu />
       </PopButton>
     </div>
     <div className="header-button-container">
       <button className="header-button button-help" title="Show help">
-        {helpIcon}
+        <HelpIcon/>
       </button>
     </div>
   </div>
