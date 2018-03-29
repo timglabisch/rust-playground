@@ -850,10 +850,14 @@ $PHI: 2.61803398875;
 
       color: #888;
       transition: color 0.2s ease-in-out;
+
+      a {
+        color: #428bca;
+      }
     }
   }
 
-  &:hover {
+  &:not(.advanced-options-item):hover {
     color: #428bca;
 
     em {
@@ -897,12 +901,74 @@ $PHI: 2.61803398875;
   }
 }
 
-.advanced-options-item input {
-  width: 100%;
-  margin-bottom: 9px;
-  padding-left: 5px;
+.advanced-options-item {
+  &.advanced-options-toggle {
+    .popover-item__header {
+      display: flex;
 
-  font-family: "Open Sans";
+      .popover-item__name {
+        font-weight: 400;
+      }
+  
+      > * {
+        flex: 1 1 100%;
+      }
+    }
+  
+    .popover-toggle {
+      display: flex;      
+
+      max-width: 110px;
+      margin-right: 5px;
+
+      text-align: center;
+      background: #fff;
+  
+      input {
+        display: none;
+      }
+  
+      label {
+        flex: 1;
+        
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: 600;
+        color: #777;
+  
+        cursor: pointer;
+
+        border: 1px solid #bbb;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        border-right-width: 0;
+  
+        ~ label {
+          border-right-width: 1px;
+          border-left: 1px solid #bbb;
+          border-radius: 0 3px 3px 0;          
+        }
+      }
+  
+      :checked + label {
+        border-color: #428bca;
+        background: #428bca;
+        color: #fff;
+
+        ~ label {
+          border-left-width: 0;
+        }
+      }
+    }
+  }
+
+  input[type="text"] {
+    width: 100%;
+    margin-bottom: 9px;
+    padding-left: 5px;
+
+    font-family: "Open Sans";
+  }
 }
 
 .shortcut-item {
