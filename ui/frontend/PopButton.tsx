@@ -1,4 +1,5 @@
 import React from 'react';
+import { Portal } from 'react-portal';
 import { Arrow, Manager, Popper, Target } from 'react-popper';
 
 interface PopButtonStatelessProps {
@@ -18,10 +19,12 @@ const PopButtonStateless: React.SFC<PopButtonStatelessProps> =
   );
 
 const PopButtonPopper = ({ children }) => (
-  <Popper className="popper" placement="bottom">
-    <Arrow className="popper__arrow" />
-    <div className="popper__content">{children}</div>
-  </Popper>
+  <Portal>
+    <Popper className="popper" placement="bottom">
+      <Arrow className="popper__arrow" />
+      <div className="popper__content">{children}</div>
+    </Popper>
+  </Portal >
 );
 
 interface PopButtonProps {
