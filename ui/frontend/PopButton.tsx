@@ -82,7 +82,7 @@ class PopButton extends React.Component<PopButtonProps, PopButtonState> {
     this.wrapperRef = r;
   }
 
-  private handleClickOutside = () => {
+  private handleClickOutside = (event) => {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
       this.close()
     }
