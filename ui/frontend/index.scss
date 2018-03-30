@@ -526,9 +526,15 @@ $PHI: 2.61803398875;
     }
 }
 
+$header-tint: #428bca;
+$header-main-border: #dedede;
+$header-accent-border: #bdbdbd;
+$header-border-radius: 3px;
+$header-transition: 0.2s ease-in-out;
+
 .header2 {
   display: flex;
-  font-family: "Open Sans";
+  font-family: $primary-font;
   font-size: 12px;
 
   .glue {
@@ -544,10 +550,10 @@ $PHI: 2.61803398875;
   display: flex;
   position: relative;
 
-  border: 1px solid #dedede;
-  border-bottom: 1px solid #bdbdbd;
+  border: 1px solid $header-main-border;
+  border-bottom: 1px solid $header-accent-border;
 
-  border-radius: 3px;
+  border-radius: $header-border-radius;
   box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
 
   &:not(.button-build-container) {
@@ -561,7 +567,7 @@ $PHI: 2.61803398875;
 
   padding: 0 15px;
 
-  border-radius: 3px;
+  border-radius: $header-border-radius;
 
   text-transform: uppercase;
   text-decoration: none;
@@ -570,7 +576,7 @@ $PHI: 2.61803398875;
 
   color: #666;
   background-color: #fff;
-  background: linear-gradient(#fff, hsl(0, 0%, 98%));
+  background: linear-gradient(#fff, #f9f9f9);
 
   white-space: nowrap;
 
@@ -583,7 +589,7 @@ $PHI: 2.61803398875;
     opacity: 0.5;
   }
 
-  &.button-expandable {
+  &--expandable {
     padding-right: 30px;
   }
 
@@ -605,7 +611,7 @@ $PHI: 2.61803398875;
   }
 
   // specific buttons
-  &.options-notify {
+  &--options-notify {
     &::before {
       content: "";
 
@@ -616,8 +622,8 @@ $PHI: 2.61803398875;
 
       position: absolute;
 
-      border-radius: 3px;
-      background: #428bca;
+      border-radius: $header-border-radius;
+      background: $header-tint;
       opacity: 0.8;
     }
 
@@ -627,11 +633,11 @@ $PHI: 2.61803398875;
     }
   }
 
-  &.button-settings {
+  &--settings {
     padding-left: 30px;
   }
 
-  &.button-help {
+  &--help {
     padding-left: 25px;
   }
 }
@@ -644,20 +650,20 @@ $PHI: 2.61803398875;
 
   .segmented-button {
     border-right-width: 0;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+    border-top-left-radius: $header-border-radius;
+    border-bottom-left-radius: $header-border-radius;
 
     position: relative;
   }
 
   .segmented-button-options {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-top-right-radius: $header-border-radius;
+    border-bottom-right-radius: $header-border-radius;
 
     position: relative;
 
     background-color: #fff;
-    border-left: 1px solid #dedede;
+    border-left: 1px solid $header-main-border;
   }
 }
 
@@ -680,7 +686,7 @@ $PHI: 2.61803398875;
     padding-right: 30px;
     padding-left: 10px;
 
-    .icon-play {
+    .icon--play {
       opacity: 1;
     }
 
@@ -694,12 +700,12 @@ $PHI: 2.61803398875;
     margin-bottom: -1px;
     height: 37px;
 
-    border: 1px solid #dedede;
-    border-bottom: 1px solid #bdbdbd;
+    border: 1px solid $header-main-border;
+    border-bottom: 1px solid $header-accent-border;
     border-left-width: 0;
   }
 
-  .header-button:hover .icon-play {
+  .header-button:hover .icon--play {
     opacity: 1;
   }
 }
@@ -711,6 +717,7 @@ $PHI: 2.61803398875;
   $fg-color: #222;
   $bg-color: white;
   $arrow-size: 10px;
+  $vertical-border-color: #cacaca;
 
   &__arrow {
     position: absolute;
@@ -730,13 +737,13 @@ $PHI: 2.61803398875;
 
     margin: $arrow-size;
 
-    border-radius: 3px;
+    border-radius: $header-border-radius;
 
     box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
 
-    border-left: 1px solid #cacaca;
-    border-right: 1px solid #cacaca;
-    border-bottom: 1px solid #bdbdbd;
+    border-left: 1px solid $vertical-border-color;
+    border-right: 1px solid $vertical-border-color;
+    border-bottom: 1px solid $header-accent-border;
   }
 
   button:enabled {
@@ -757,10 +764,10 @@ $PHI: 2.61803398875;
     font-weight: 700;
     font-size: 11px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid $header-main-border;
   }
 
-  &.group-validate-options {
+  &--validate-options {
     margin-top: 5px;
     margin-bottom: 0 !important;
 
@@ -771,12 +778,15 @@ $PHI: 2.61803398875;
 
     border-top: 1px solid #cacaca;
 
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: $header-border-radius;
+    border-bottom-right-radius: $header-border-radius;
 
     text-align: center;
 
     button {
+      $bg-light: #fff;
+      $bg-dark: #f9f9f9;
+
       display: inline-block;
 
       text-align: center;
@@ -789,21 +799,21 @@ $PHI: 2.61803398875;
 
       color: #666;
 
-      border: 1px solid #dedede;
-      border-bottom: 1px solid #bdbdbd;
+      border: 1px solid $header-main-border;
+      border-bottom: 1px solid $header-accent-border;
 
-      background: #fff;
-      background: linear-gradient(#fff, hsl(0, 0%, 98%));
-      border-radius: 3px;
+      background: $bg-light;
+      background: linear-gradient($bg-light, $bg-dark);
+      border-radius: $header-border-radius;
 
       box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
 
       &:hover {
-        background: linear-gradient(#fff, #f3f3f3);
+        background: linear-gradient($bg-light, #f3f3f3);
       }
 
       &:active {
-        background: linear-gradient(#f9f9f9, #ededed);
+        background: linear-gradient($bg-dark, #ededed);
         box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
 
         border-top-color: #bababa;
@@ -825,7 +835,7 @@ $PHI: 2.61803398875;
   color: #333;
   background: #fff;
 
-  transition: color 0.2s ease-in-out;
+  transition: color $header-transition;
 
   // Button reset
   border: none;
@@ -849,16 +859,16 @@ $PHI: 2.61803398875;
       font-style: normal;
 
       color: #888;
-      transition: color 0.2s ease-in-out;
+      transition: color $header-transition;
 
       a {
-        color: #428bca;
+        color: $header-tint;
       }
     }
   }
 
   &:not(.advanced-options-item):hover {
-    color: #428bca;
+    color: $header-tint;
 
     em {
       color: currentColor;
@@ -867,35 +877,35 @@ $PHI: 2.61803398875;
 }
 
 .selectable-item {
-  .popover-item__header {
+  &__header {
     position: relative;
   }
 
-  .popover-item__description {
+  &__description {
     margin-right: 10px;
   }
 
-  .icon-checkmark {
+  .icon--checkmark {
     margin: 0 5px 0 5px;
 
     top: -2px;
     right: 0;
 
     opacity: 0;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity $header-transition;
   }
 
-  &.selected-item {
+  &--selected {
     font-weight: 600;
-    color: #428bca;
+    color: $header-tint;
 
-    .icon-checkmark {
+    .icon--checkmark {
       opacity: 1;
     }
   }
 
   &:hover {
-    .icon-checkmark {
+    .icon--checkmark {
       opacity: 0.5;
     }
   }
@@ -929,6 +939,8 @@ $PHI: 2.61803398875;
       }
 
       label {
+        $border: 1px solid #bbb;
+
         flex: 1;
 
         text-transform: uppercase;
@@ -938,21 +950,21 @@ $PHI: 2.61803398875;
 
         cursor: pointer;
 
-        border: 1px solid #bbb;
-        border-top-left-radius: 3px;
-        border-bottom-left-radius: 3px;
+        border: $border;
+        border-top-left-radius: $header-border-radius;
+        border-bottom-left-radius: $header-border-radius;
         border-right-width: 0;
 
         ~ label {
           border-right-width: 1px;
-          border-left: 1px solid #bbb;
-          border-radius: 0 3px 3px 0;
+          border-left: $border;
+          border-radius: 0 $header-border-radius $header-border-radius 0;
         }
       }
 
       :checked + label {
-        border-color: #428bca;
-        background: #428bca;
+        border-color: $header-tint;
+        background: $header-tint;
         color: #fff;
 
         ~ label {
@@ -967,16 +979,16 @@ $PHI: 2.61803398875;
     margin-bottom: 9px;
     padding-left: 5px;
 
-    font-family: "Open Sans";
+    font-family: $primary-font;
   }
 }
 
 .shortcut-item {
-  .popover-item__header {
+  &__header {
     display: flex;
   }
 
-  .popover-item__name {
+  &__name {
     flex: 1;
   }
 
@@ -985,7 +997,7 @@ $PHI: 2.61803398875;
 
     margin: 0 5px;
 
-    border: 1px solid #dedede;
+    border: 1px solid $header-main-border;
     border-radius: 4px;
     padding: 0.1em 0.5em;
 
@@ -1001,32 +1013,32 @@ $PHI: 2.61803398875;
 
   fill: currentColor;
 
-  &.icon-play {
+  &--play {
     right: 8px;
     top: calc(50% - 10px);
   }
 
-  &.icon-more {
+  &--more {
     left: calc(50% - 9px);
     top: calc(50% - 9px);
     opacity: 0.6;
   }
 
-  &.icon-expandable {
+  &--expandable {
     top: calc(50% - 10px);
     right: 6px;
     color: #666;
   }
 
-  &.icon-settings {
+  &--settings {
     top: calc(50% - 7.5px);
     left: 9px;
     color: #888;
     opacity: 0.5;
   }
 
-  &.icon-help {
-    top: calc(50% - 10px);
+  &--help {
+    top: calc(50% - 9px);
     left: calc(50% - 9px);
     color: #666;
   }
