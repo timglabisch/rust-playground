@@ -7,7 +7,9 @@ interface MenuGroupProps {
 const MenuGroup: React.SFC<MenuGroupProps> = ({ title, children }) => (
   <div className="menu-group">
     <h1 className="menu-group__title">{title}</h1>
-    {children}
+    <div className="menu-group__content">
+      {children}
+    </div>
   </div>
 );
 

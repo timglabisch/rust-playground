@@ -753,7 +753,11 @@ $header-transition: 0.2s ease-in-out;
 
 .menu-group {
   width: 25em;
-  padding: 0.75em 1em;
+  padding: 0.75em 1em 0 1em;
+
+  &:last-child {
+    padding-bottom: 0.75em;
+  }
 
   line-height: normal;
 
@@ -766,11 +770,10 @@ $header-transition: 0.2s ease-in-out;
     padding-bottom: 10px;
     border-bottom: 1px solid $header-main-border;
   }
-  /*
-  &:last-child {
-    margin-bottom: 10px;
+
+  &__content {
+    padding: 1em 0.25em;
   }
-*/
 }
 
 .validate-options {
@@ -921,8 +924,14 @@ $header-transition: 0.2s ease-in-out;
 .boolean-config {
   display: flex;
 
+  &__name {
+    flex: 1;
+    font-size: 13px;
+  }
+
   &__toggle {
-    margin-left: auto;
+    flex: 1;
+    display: flex;
   }
 
   input {
@@ -938,6 +947,7 @@ $header-transition: 0.2s ease-in-out;
     font-size: 11px;
     font-weight: 600;
     color: #777;
+    text-align: center;
 
     cursor: pointer;
 
