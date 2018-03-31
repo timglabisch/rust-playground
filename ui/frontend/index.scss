@@ -1028,15 +1028,25 @@ $header-transition: 0.2s ease-in-out;
 }
 
 .shortcut-item {
+  @include button-reset;
+  width: 100%;
+
+  transition: color $header-transition;
+
+  &:hover {
+    color: $header-tint;
+  }
+
   &__header {
     display: flex;
   }
 
   &__name {
+    @include menu-item-title;
     flex: 1;
   }
 
-  kbd {
+  &__shortcut {
     font-family: "Source Code Pro";
 
     margin: 0 5px;
