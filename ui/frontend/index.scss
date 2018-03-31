@@ -893,9 +893,31 @@ $header-transition: 0.2s ease-in-out;
   font-weight: 600;
 }
 
+.button-menu-item {
+  @include button-reset;
+
+  transition: color $header-transition;
+
+  &:hover {
+    color: $header-tint;
+  }
+
+  &__name {
+    @include menu-item-title;
+    margin: 0;
+  }
+
+  &__description {
+    margin: 0;
+  }
+}
+
+// TODO: add 'menu'?
 .selectable-item {
   width: 100%;
   @include button-reset;
+
+  transition: color $header-transition;
 
   &__header {
     display: flex;
@@ -928,6 +950,14 @@ $header-transition: 0.2s ease-in-out;
   &--selected &__checkmark,
   &--selected:hover &__checkmark {
     opacity: 1;
+  }
+}
+
+.build-menu {
+  &__aside {
+    font-size: 90%;
+    margin: 0.25em 0 0 0;
+    color: #888;
   }
 }
 

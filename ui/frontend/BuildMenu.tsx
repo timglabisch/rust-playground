@@ -1,26 +1,29 @@
 import React from 'react';
 
 import MenuGroup from './MenuGroup';
-import PopoverItem from './PopoverItem';
+import ButtonMenuItem from './ButtonMenuItem';
 
 const BuildMenu = () => (
   <MenuGroup title="What do you want to do?">
-    <PopoverItem name="Build">
+    <ButtonMenuItem name="Build">
       No bells and whistles, regular build coming right up&nbsp;:D
-    </PopoverItem>
-    <PopoverItem name="ASM">
+    </ButtonMenuItem>
+    <ButtonMenuItem name="ASM">
       Build and show the resulting assembly code.
-    </PopoverItem>
-    <PopoverItem name="LLVM IR">
+    </ButtonMenuItem>
+    <ButtonMenuItem name="LLVM IR">
       Build and show the resulting LLVM IR, LLVM's intermediate representation.
-    </PopoverItem>
-    <PopoverItem name="MIR">
+    </ButtonMenuItem>
+    <ButtonMenuItem name="MIR">
       Build and show the resulting MIR, Rust's intermediate representation.
-    </PopoverItem>
-    <PopoverItem name="WASM">
+    </ButtonMenuItem>
+    <ButtonMenuItem name="WASM">
       Build a WebAssembly module for web browsers, in the .WAT textual representation.
-      <em>Note: WASM currently requires using the Nightly channel, selecting this option will switch to Nightly.</em>
-    </PopoverItem>
+      <p className="build-menu__aside">
+        Note: WASM currently requires using the Nightly channel, selecting this
+        option will switch to Nightly.
+      </p>
+    </ButtonMenuItem>
   </MenuGroup>
 );
 
