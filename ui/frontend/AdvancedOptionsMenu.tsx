@@ -21,7 +21,7 @@ const AdvancedOptionsMenu = () => (
       </div>
     </MenuGroup>
     <MenuGroup title="Advanced options &mdash; All of them!">
-      <PopoverItem name="" className="advanced-options-item">
+      <PopoverItem className="advanced-options-item">
         <input type="text" placeholder="-C or -Z ..." />
         For the most exotic of uses, it's also possible to manually set -C and -Z options.
         Brought to you courtesy of RUSTFLAGS.
