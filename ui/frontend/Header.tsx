@@ -202,7 +202,7 @@ const BuildIcon = () => (
 );
 
 const ExpandableIcon = () => (
-  <svg className="icon icon--expandable" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+  <svg className="icon icon--expandable" height="10" viewBox="6 8 12 8" width="10" xmlns="http://www.w3.org/2000/svg">
     <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
     <path d="M0 0h24v24H0z" fill="none" />
   </svg>
@@ -249,7 +249,7 @@ const Header2 = () => {
           <BuildMenu />
         </PopButton>
       </div>
-      <div className="header-button-container segmented-button-container">
+      <div className="segmented-button2">
         <PopButton button={ModeChannelMenuButton}>
           <ModeChannelMenu />
         </PopButton>
@@ -291,7 +291,7 @@ const BuildMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) =
 
 const ModeChannelMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) => (
   <button
-    className="header-button segmented-button header-button--expandable"
+    className="segmented-button2__button"
     title="Rust version and optimization options"
     {...popButtonProps}>
     Options : Debug / Stable
@@ -305,7 +305,7 @@ interface AdvancedOptionsMenuButtonProps extends PopButtonEnhancements {
 
 const AdvancedOptionsMenuButton: React.SFC<AdvancedOptionsMenuButtonProps> = ({ hasFlags, popButtonProps }) => {
   const title = hasFlags ? "Show the configured compilation flags" : "Advanced compilation flags";
-  const classname = "header-button segmented-button-options ${ hasFlags ? 'header-button--options-notify' : ''}";
+  const classname = "segmented-button2__button ${ hasFlags ? 'segmented-button2__button--modified' : ''}";
 
   return (
     <button
