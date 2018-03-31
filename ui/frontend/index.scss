@@ -538,26 +538,20 @@ $header-transition: 0.2s ease-in-out;
 
   padding: 1.25em 0;
 
-  &__spacer {
-    flex: 1;
+  &__set {
+    margin-right: 0.5em;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &--channel-mode {
+      margin-right: auto;
+    }
   }
 
   button:enabled {
     cursor: pointer;
-  }
-}
-
-.header-button-container {
-  display: flex;
-
-  border: 1px solid $header-main-border;
-  border-bottom: 1px solid $header-accent-border;
-
-  border-radius: $header-border-radius;
-  box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
-
-  &:not(.button-build-container) {
-    margin-left: 7px;
   }
 }
 
@@ -566,149 +560,84 @@ $header-transition: 0.2s ease-in-out;
   padding: 0;
   text-align: inherit;
   line-height: inherit;
+  background: inherit;
 }
 
-.segmented-button2 {
+.segmented-button {
   display: flex;
   align-items: center;
 
   height: 3em;
 
-  background-color: #fff;
-  background: linear-gradient(#fff, #f9f9f9);
-  color: #666;
-
-  border: 1px solid $header-main-border;
-  border-bottom: 1px solid $header-accent-border;
-
   border-radius: $header-border-radius;
-  box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
+  box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
 
   &__button {
     @include button-reset;
+
+    height: 100%;
+    padding: 0 0.75em;
+
     display: flex;
     align-items: center;
 
     text-transform: uppercase;
     text-decoration: none;
     font-weight: 600;
+
     white-space: nowrap;
-  }
-}
-
-.header-button {
-  border-radius: $header-border-radius;
-
-  padding: 0 0.75em;
-  height: 3em;
-
-  text-transform: uppercase;
-  text-decoration: none;
-
-  font-weight: 600;
-
-  color: #666;
-  background-color: #fff;
-  background: linear-gradient(#fff, #f9f9f9);
-
-  white-space: nowrap;
-
-  display: flex;
-  align-items: center;
-
-  .icon {
-    opacity: 0.5;
-  }
-
-  &:hover {
-    background: linear-gradient(#fff, #f3f3f3);
-    color: #333;
-
-    .icon {
-      opacity: 0.7;
-    }
-  }
-
-  &:active {
-    background: linear-gradient(#f9f9f9, #ededed);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-
-    border-top-color: #bababa;
-    border-bottom-color: #d6d6d6;
-  }
-
-  // specific buttons
-  &--options-notify {
-    &::before {
-      content: "";
-
-      top: calc(50% - 6px);
-      left: calc(50% - 11px);
-      width: 22px;
-      height: 12px;
-
-      border-radius: $header-border-radius;
-      background: $header-tint;
-      opacity: 0.8;
-    }
-
-    .icon {
-      color: #fff;
-      opacity: 1 !important;
-    }
-  }
-}
-
-.segmented-button-container {
-  .header-button {
-    border-radius: 0;
-    box-shadow: none;
-  }
-
-  .segmented-button {
-    border-right-width: 0;
-    border-top-left-radius: $header-border-radius;
-    border-bottom-left-radius: $header-border-radius;
-  }
-
-  .segmented-button-options {
-    border-top-right-radius: $header-border-radius;
-    border-bottom-right-radius: $header-border-radius;
 
     background-color: #fff;
-    border-left: 1px solid $header-main-border;
-  }
-}
+    background: linear-gradient(#fff, #f9f9f9);
+    color: #666;
 
-.button-build-container {
-  border: none;
+    border: 1px solid $header-main-border;
 
-  .button-build {
-    font-weight: 700;
+    &:first-child {
+      border-top-left-radius: $header-border-radius;
+      border-bottom-left-radius: $header-border-radius;
+    }
 
-    background: $rust;
-    color: white;
+    &:last-child {
+      border-top-right-radius: $header-border-radius;
+      border-bottom-right-radius: $header-border-radius;
+    }
 
-    border: 1px solid hsl(15, 66.7%, 32%);
-    border-right-width: 0;
+    &:not(:first-child) {
+      border-left: none;
+    }
 
-    .icon--play {
-      opacity: 1;
+    &:not(:last-child) {
+      border-right: 1px solid $header-main-border;
     }
 
     &:hover {
-      background: #80331a;
+      background: linear-gradient(#fff, #f3f3f3);
+      color: #333;
     }
-  }
 
-  .segmented-button-options {
-    border: 1px solid $header-main-border;
-    border-bottom: 1px solid $header-accent-border;
-    border-left-width: 0;
-  }
+    &--build {
+      font-weight: 700;
 
-  .header-button:hover .icon--play {
-    opacity: 1;
+      background: $rust;
+      color: white;
+
+      border-color: hsl(15, 66.7%, 32%);
+
+      &:not(:last-child) {
+        // Silly specificity
+        border-right-width: 0;
+      }
+
+      .icon--play {
+        opacity: 1;
+      }
+
+      &:hover {
+        background: #80331a;
+        color: white;
+      }
+    }
   }
 }
 
@@ -1024,6 +953,7 @@ $header-transition: 0.2s ease-in-out;
 
   &--expandable {
     color: #666;
+    opacity: 0.5;
   }
 
   &--settings {
