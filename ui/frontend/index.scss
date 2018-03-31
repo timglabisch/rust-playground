@@ -549,7 +549,6 @@ $header-transition: 0.2s ease-in-out;
 
 .header-button-container {
   display: flex;
-  position: relative;
 
   border: 1px solid $header-main-border;
   border-bottom: 1px solid $header-accent-border;
@@ -588,13 +587,11 @@ $header-transition: 0.2s ease-in-out;
 
   white-space: nowrap;
 
+  display: flex;
+  align-items: center;
 
   .icon {
     opacity: 0.5;
-  }
-
-  &--expandable {
-    padding-right: 30px;
   }
 
   &:hover {
@@ -624,8 +621,6 @@ $header-transition: 0.2s ease-in-out;
       width: 22px;
       height: 12px;
 
-      position: absolute;
-
       border-radius: $header-border-radius;
       background: $header-tint;
       opacity: 0.8;
@@ -635,14 +630,6 @@ $header-transition: 0.2s ease-in-out;
       color: #fff;
       opacity: 1 !important;
     }
-  }
-
-  &--settings {
-    padding-left: 30px;
-  }
-
-  &--help {
-    padding-left: 25px;
   }
 }
 
@@ -656,15 +643,11 @@ $header-transition: 0.2s ease-in-out;
     border-right-width: 0;
     border-top-left-radius: $header-border-radius;
     border-bottom-left-radius: $header-border-radius;
-
-    position: relative;
   }
 
   .segmented-button-options {
     border-top-right-radius: $header-border-radius;
     border-bottom-right-radius: $header-border-radius;
-
-    position: relative;
 
     background-color: #fff;
     border-left: 1px solid $header-main-border;
@@ -680,15 +663,8 @@ $header-transition: 0.2s ease-in-out;
     background: $rust;
     color: white;
 
-    margin-top: -1px;
-    margin-bottom: -1px;
-    height: 37px;
-
     border: 1px solid hsl(15, 66.7%, 32%);
     border-right-width: 0;
-
-    padding-right: 30px;
-    padding-left: 10px;
 
     .icon--play {
       opacity: 1;
@@ -700,10 +676,6 @@ $header-transition: 0.2s ease-in-out;
   }
 
   .segmented-button-options {
-    margin-top: -1px;
-    margin-bottom: -1px;
-    height: 37px;
-
     border: 1px solid $header-main-border;
     border-bottom: 1px solid $header-accent-border;
     border-left-width: 0;
@@ -1017,42 +989,23 @@ $header-transition: 0.2s ease-in-out;
 }
 
 .icon {
-  position: absolute;
-  top: 0;
   display: block;
   fill: currentColor;
 
-  &--play {
-    right: 8px;
-    top: calc(50% - 10px);
-  }
-
   &--more {
-    left: calc(50% - 9px);
-    top: calc(50% - 9px);
     opacity: 0.6;
   }
 
   &--expandable {
-    top: calc(50% - 10px);
-    right: 6px;
     color: #666;
   }
 
   &--settings {
-    top: calc(50% - 7.5px);
-    left: 9px;
     color: #888;
     opacity: 0.5;
   }
 
   &--help {
-    top: calc(50% - 9px);
-    left: calc(50% - 9px);
     color: #666;
-  }
-
-  &--checkmark {
-    position: inherit;
   }
 }
