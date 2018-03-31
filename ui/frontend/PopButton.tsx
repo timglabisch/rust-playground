@@ -2,38 +2,47 @@ import React from 'react';
 import { Portal } from 'react-portal';
 import { Arrow, Manager, Popper, Target } from 'react-popper';
 
-type SetRefFunc = (ref: HTMLElement) => void;
+export type SetRefFunc = (ref: HTMLElement) => void;
+export type ButtonFactory = (_: PopButtonEnhancements) => React.ReactNode;
+export type ContentFactory = (_: PopButtonContentEnhancements) => React.ReactNode;
+
+export interface PopButtonEnhancements {
+  popButtonProps: {
+    ref: SetRefFunc;
+    onClick: () => void;
+  };
+}
 
 interface PopButtonStatelessProps {
-  text: string;
-  className: string;
+  button: ButtonFactory;
   isOpen: boolean;
-  icon: React.ReactNode;
-  title?: string;
-  onClick: () => any;
+  onClick: () => void;
   setButtonRef: SetRefFunc;
   setPopperRef: SetRefFunc;
 }
 
-
-// TODO: just take in button props and splat them, or a whole button prop?
 const PopButtonStateless: React.SFC<PopButtonStatelessProps> =
-  ({ text, title, className, icon, children, isOpen, onClick, setButtonRef, setPopperRef }) => (
-    <Manager tag={false}>
-      <Target>{({ targetProps: { ref: setTargetRef, ...targetProps } }) => (
-        <button
-          onClick={onClick}
-          className={className}
-          title={title}
-          ref={r => { setButtonRef(r); setTargetRef(r); }}
-          {...targetProps}>
-          {text}
-          {icon}
-        </button>
-      )}</Target>
-      {isOpen && <PopButtonPopper setPopperRef={setPopperRef}>{children}</PopButtonPopper>}
-    </Manager>
-  );
+  ({ button, children, isOpen, onClick, setButtonRef, setPopperRef }) => {
+
+    const targetTrampoline = ({ targetProps: { ref: setTargetRef, ...targetProps } }) => (
+      button({
+        popButtonProps: {
+          onClick,
+          ref: r => {
+            setButtonRef(r);
+            setTargetRef(r);
+          }
+        }
+      })
+    );
+
+    return (
+      <Manager tag={false}>
+        <Target>{targetTrampoline}</Target>
+        {isOpen && <PopButtonPopper setPopperRef={setPopperRef}>{children}</PopButtonPopper>}
+      </Manager>
+    )
+  };
 
 interface PopButtonPopperProps {
   setPopperRef: SetRefFunc;
@@ -51,18 +60,15 @@ const PopButtonPopper: React.SFC<PopButtonPopperProps> = ({ setPopperRef, childr
 );
 
 interface PopButtonProps {
-  text?: string;
-  className: string;
-  icon?: React.ReactNode;
-  title?: string;
-  children: React.ReactNode | ((_: PopButtonEnhancements) => React.ReactNode);
+  button: ButtonFactory;
+  children: React.ReactNode | ContentFactory;
 }
 
 interface PopButtonState {
   isOpen: boolean;
 }
 
-export interface PopButtonEnhancements {
+export interface PopButtonContentEnhancements {
   popButtonClose: () => void;
 }
 
@@ -114,7 +120,7 @@ class PopButton extends React.Component<PopButtonProps, PopButtonState> {
 
   public render() {
     const { isOpen } = this.state;
-    const { text, className, icon, title, children } = this.props;
+    const { button, children } = this.props;
 
     const enhancedProps = { popButtonClose: this.close };
     const enhancedChildren =
@@ -124,10 +130,7 @@ class PopButton extends React.Component<PopButtonProps, PopButtonState> {
 
     return (
       <PopButtonStateless
-        text={text}
-        className={className}
-        icon={icon}
-        title={title}
+        button={button}
         isOpen={isOpen}
         onClick={this.handleToggleVisibility}
         setButtonRef={this.setButtonRef}
