@@ -561,6 +561,13 @@ $header-transition: 0.2s ease-in-out;
   }
 }
 
+@mixin button-reset {
+  border: none;
+  padding: 0;
+  text-align: inherit;
+  line-height: inherit;
+}
+
 .header-button {
   height: 35px;
   line-height: 35px;
@@ -580,10 +587,6 @@ $header-transition: 0.2s ease-in-out;
 
   white-space: nowrap;
 
-  // Button reset
-  border: none;
-  text-align: inherit;
-  line-height: inherit;
 
   .icon {
     opacity: 0.5;
@@ -776,6 +779,14 @@ $header-transition: 0.2s ease-in-out;
   }
 }
 
+.menu-item {
+  margin-bottom: 1em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .validate-options {
   margin-top: 5px;
   margin-bottom: 0 !important;
@@ -831,12 +842,6 @@ $header-transition: 0.2s ease-in-out;
   }
 }
 
-
-// ideas
-// popover item becomes bare class (margin, padding)
-// another with header/description (check + kbd)
-
-
 .popover-item {
   width: 100%;
 
@@ -847,10 +852,7 @@ $header-transition: 0.2s ease-in-out;
 
   transition: color $header-transition;
 
-  // Button reset
-  border: none;
-  text-align: inherit;
-  line-height: inherit;
+  @include button-reset;
 
   &__name {
     font-size: 13px;
@@ -886,38 +888,52 @@ $header-transition: 0.2s ease-in-out;
   }
 }
 
+@mixin menu-item-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
 .selectable-item {
+  width: 100%;
+  @include button-reset;
+
   &__header {
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  &__description {
-    margin-right: 10px;
+  &__name {
+    @include menu-item-title;
   }
 
-  .icon--checkmark {
-    margin: 0 5px 0 5px;
-
-    top: -2px;
-    right: 0;
-
-    opacity: 0;
-    transition: opacity $header-transition;
+  &:hover {
+    color: $header-tint;
   }
 
   &--selected {
     font-weight: 600;
     color: $header-tint;
-
-    .icon--checkmark {
-      opacity: 1;
-    }
   }
 
-  &:hover {
-    .icon--checkmark {
-      opacity: 0.5;
-    }
+  &__checkmark {
+    opacity: 0;
+    transition: opacity $header-transition;
+  }
+
+  &:hover &__checkmark {
+    opacity: 0.5;
+  }
+
+  &--selected &__checkmark,
+  &--selected:hover &__checkmark {
+    opacity: 1;
+  }
+}
+
+.mode-channel-menu {
+  &__description {
+    margin: 0;
   }
 }
 
@@ -1008,7 +1024,7 @@ $header-transition: 0.2s ease-in-out;
 .icon {
   position: absolute;
   top: 0;
-
+  display: block;
   fill: currentColor;
 
   &--play {
@@ -1039,5 +1055,9 @@ $header-transition: 0.2s ease-in-out;
     top: calc(50% - 9px);
     left: calc(50% - 9px);
     color: #666;
+  }
+
+  &--checkmark {
+    position: inherit;
   }
 }
