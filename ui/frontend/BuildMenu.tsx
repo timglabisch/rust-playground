@@ -1,10 +1,10 @@
 import React from 'react';
 
-import PopoverGroup from './PopoverGroup';
+import MenuGroup from './MenuGroup';
 import PopoverItem from './PopoverItem';
 
 const BuildMenu = () => (
-  <PopoverGroup title="What do you want to do?">
+  <MenuGroup title="What do you want to do?">
     <PopoverItem name="Build">
       No bells and whistles, regular build coming right up&nbsp;:D
     </PopoverItem>
@@ -21,7 +21,7 @@ const BuildMenu = () => (
       Build a WebAssembly module for web browsers, in the .WAT textual representation.
       <em>Note: WASM currently requires using the Nightly channel, selecting this option will switch to Nightly.</em>
     </PopoverItem>
-  </PopoverGroup>
+  </MenuGroup>
 );
 
 export default BuildMenu;

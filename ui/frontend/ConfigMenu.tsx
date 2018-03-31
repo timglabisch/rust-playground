@@ -1,17 +1,15 @@
 import React, { Fragment } from 'react';
 
-import PopoverGroup from './PopoverGroup';
+import MenuGroup from './MenuGroup';
+import ValidateOptions from './ValidateOptions';
 
 const ConfigMenu = () => (
   <Fragment>
-    <PopoverGroup title="Editor and UI configuration">
-    </PopoverGroup>
-    <PopoverGroup title="Assembly minutiae">
-    </PopoverGroup>
-    {/* TODO: crossing the streams */}
-    <div className="popover-group popover-group--validate-options">
-      <button className="button-validate">Done configuring!</button>
-    </div>
+    <MenuGroup title="Editor and UI configuration">
+    </MenuGroup>
+    <MenuGroup title="Assembly minutiae">
+    </MenuGroup>
+    <ValidateOptions>Done configuring!</ValidateOptions>
   </Fragment>
 );
 

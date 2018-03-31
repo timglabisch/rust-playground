@@ -751,9 +751,9 @@ $header-transition: 0.2s ease-in-out;
   }
 }
 
-.popover-group {
-  width: 295px;
-  padding: 9px 14px;
+.menu-group {
+  width: 25em;
+  padding: 0.75em 1em;
 
   line-height: normal;
 
@@ -766,66 +766,73 @@ $header-transition: 0.2s ease-in-out;
     padding-bottom: 10px;
     border-bottom: 1px solid $header-main-border;
   }
-
-  &--validate-options {
-    margin-top: 5px;
-    margin-bottom: 0 !important;
-
-    padding-top: 10px;
-    padding-bottom: 13px;
-
-    background: #f4f4f4;
-
-    border-top: 1px solid #cacaca;
-
-    border-bottom-left-radius: $header-border-radius;
-    border-bottom-right-radius: $header-border-radius;
-
-    text-align: center;
-
-    button {
-      $bg-light: #fff;
-      $bg-dark: #f9f9f9;
-
-      display: inline-block;
-
-      text-align: center;
-      text-decoration: none;
-
-      text-transform: uppercase;
-      font-weight: 600;
-
-      padding: 8px 15px;
-
-      color: #666;
-
-      border: 1px solid $header-main-border;
-      border-bottom: 1px solid $header-accent-border;
-
-      background: $bg-light;
-      background: linear-gradient($bg-light, $bg-dark);
-      border-radius: $header-border-radius;
-
-      box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
-
-      &:hover {
-        background: linear-gradient($bg-light, #f3f3f3);
-      }
-
-      &:active {
-        background: linear-gradient($bg-dark, #ededed);
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-
-        border-top-color: #bababa;
-        border-bottom-color: #d6d6d6;
-      }
-    }
-  }
-
+  /*
   &:last-child {
     margin-bottom: 10px;
   }
+*/
 }
+
+.validate-options {
+  margin-top: 5px;
+  margin-bottom: 0 !important;
+
+  padding-top: 10px;
+  padding-bottom: 13px;
+
+  background: #f4f4f4;
+
+  border-top: 1px solid #cacaca;
+
+  border-bottom-left-radius: $header-border-radius;
+  border-bottom-right-radius: $header-border-radius;
+
+  text-align: center;
+
+  &__button {
+    $bg-light: #fff;
+    $bg-dark: #f9f9f9;
+
+    display: inline-block;
+
+    text-align: center;
+    text-decoration: none;
+
+    text-transform: uppercase;
+    font-weight: 600;
+
+    padding: 8px 15px;
+
+    color: #666;
+
+    border: 1px solid $header-main-border;
+    border-bottom: 1px solid $header-accent-border;
+
+    background: $bg-light;
+    background: linear-gradient($bg-light, $bg-dark);
+    border-radius: $header-border-radius;
+
+    box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
+
+    &:hover {
+      background: linear-gradient($bg-light, #f3f3f3);
+    }
+
+    &:active {
+      background: linear-gradient($bg-dark, #ededed);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+
+      border-top-color: #bababa;
+      border-bottom-color: #d6d6d6;
+    }
+  }
+}
+
+
+// ideas
+// popover item becomes bare class (margin, padding)
+// another with header/description (check + kbd)
+
 
 .popover-item {
   width: 100%;
