@@ -534,10 +534,11 @@ $header-transition: 0.2s ease-in-out;
 
 .header2 {
   display: flex;
-  font-family: $primary-font;
   font-size: 12px;
 
-  .glue {
+  padding: 1.25em 0;
+
+  &__spacer {
     flex: 1;
   }
 

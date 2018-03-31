@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import PopButton from './PopButton';
+import PopButton, { PopButtonEnhancements } from './PopButton';
+
 import Link from './uss-router/Link';
 
 import {
@@ -236,46 +237,37 @@ import ConfigMenu from './ConfigMenu';
 
 const Header2 = () => {
   const hasFlags = false;
-  const advancedOptionsTooltip = hasFlags ? "Show the configured compilation flags" : "Advanced compilation flags";
-  let advancedOptionsClassName = "header-button segmented-button-options";
-  if (hasFlags) {
-    advancedOptionsClassName += " header-button--options-notify";
-  }
 
   return (
-    <div className="header header2">
+    <div className="header2">
       <div className="header-button-container segmented-button-container button-build-container">
         <button className="header-button segmented-button button-build">
           Build
         <BuildIcon />
         </button>
-        <PopButton icon={<MoreOptionsIcon />} className="header-button segmented-button-options" title="Select what to build">
+        <PopButton button={BuildMenuButton}>
           <BuildMenu />
         </PopButton>
       </div>
       <div className="header-button-container segmented-button-container">
-        <PopButton
-          text="Options : Debug / Stable"
-          icon={<ExpandableIcon />}
-          className="header-button segmented-button header-button--expandable"
-          title="Rust version and optimization options">
+        <PopButton button={ModeChannelMenuButton}>
           <ModeChannelMenu />
         </PopButton>
-        <PopButton icon={<MoreOptionsIcon />} className={advancedOptionsClassName} title={advancedOptionsTooltip}>
+        <PopButton button={({ ...p }) => <AdvancedOptionsMenuButton hasFlags={hasFlags} {...p} />}>
           <AdvancedOptionsMenu />
         </PopButton>
       </div>
-      <div className="glue"></div>
+      <div className="header2__spacer" />
       <div className="header-button-container">
         <button className="header-button" title="Create shareable links to this code">Share</button>
       </div>
       <div className="header-button-container">
-        <PopButton text="Tools" icon={<ExpandableIcon />} className="header-button header-button--expandable">
+        <PopButton button={ToolsMenuButton}>
           <ToolsMenu />
         </PopButton>
       </div>
       <div className="header-button-container">
-        <PopButton text="Config" icon={<ConfigIcon />} className="header-button header-button--settings" title="Show the configuration options">
+        <PopButton button={ConfigMenuButton}>
           <ConfigMenu />
         </PopButton>
       </div>
@@ -284,9 +276,65 @@ const Header2 = () => {
           <HelpIcon />
         </button>
       </div>
-    </div>
+    </div >
   )
 };
+
+const BuildMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) => (
+  <button
+    className="header-button segmented-button-options"
+    title="Select what to build"
+    {...popButtonProps}>
+    <MoreOptionsIcon />
+  </button>
+);
+
+const ModeChannelMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) => (
+  <button
+    className="header-button segmented-button header-button--expandable"
+    title="Rust version and optimization options"
+    {...popButtonProps}>
+    Options : Debug / Stable
+      <ExpandableIcon />
+  </button>
+);
+
+interface AdvancedOptionsMenuButtonProps extends PopButtonEnhancements {
+  hasFlags: boolean;
+}
+
+const AdvancedOptionsMenuButton: React.SFC<AdvancedOptionsMenuButtonProps> = ({ hasFlags, popButtonProps }) => {
+  const title = hasFlags ? "Show the configured compilation flags" : "Advanced compilation flags";
+  const classname = "header-button segmented-button-options ${ hasFlags ? 'header-button--options-notify' : ''}";
+
+  return (
+    <button
+      className={classname}
+      title={title}
+      {...popButtonProps}>
+      <MoreOptionsIcon />
+    </button>
+  );
+}
+
+const ToolsMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) => (
+  <button
+    className="header-button header-button--expandable"
+    {...popButtonProps}>
+    Tools
+      <ExpandableIcon />
+  </button>
+);
+
+const ConfigMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) => (
+  <button
+    className="header-button header-button--settings"
+    title="Show the configuration options"
+    {...popButtonProps}>
+    Config
+      <ConfigIcon />
+  </button>
+);
 
 const mapStateToProps = (state: State) => {
   const { configuration: { channel, mode } } = state;
