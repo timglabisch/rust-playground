@@ -567,25 +567,11 @@ $header-transition: 0.2s ease-in-out;
   display: flex;
   align-items: center;
 
-  height: 3em;
-
   border-radius: $header-border-radius;
   box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
 
   &__button {
     @include button-reset;
-
-    height: 100%;
-    padding: 0 0.75em;
-
-    display: flex;
-    align-items: center;
-
-    text-transform: uppercase;
-    text-decoration: none;
-    font-weight: 600;
-
-    white-space: nowrap;
 
     background-color: #fff;
     background: linear-gradient(#fff, #f9f9f9);
@@ -943,25 +929,30 @@ $header-transition: 0.2s ease-in-out;
   }
 }
 
+.header-button {
+  height: 3em;
+  padding: 0 0.75em;
+  display: flex;
+  align-items: center;
+
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  &__icon {
+    margin-right: 0.5em;
+    opacity: 0.5;
+  }
+
+  &__drop {
+    margin-left: 0.75em;
+    opacity: 0.5;
+  }
+}
+
 .icon {
   display: block;
   fill: currentColor;
-
-  &--more {
-    opacity: 0.6;
-  }
-
-  &--expandable {
-    color: #666;
-    opacity: 0.5;
-  }
-
-  &--settings {
-    color: #888;
-    opacity: 0.5;
-  }
-
-  &--help {
-    color: #666;
-  }
 }
