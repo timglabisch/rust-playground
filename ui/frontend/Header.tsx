@@ -235,116 +235,117 @@ import ModeChannelMenu from './ModeChannelMenu';
 import ToolsMenu from './ToolsMenu';
 import ConfigMenu from './ConfigMenu';
 
+const SegmentedButtonSet: React.SFC<{}> = ({ children }) => (
+  <div className="segmented-button">{children}</div>
+);
+
+interface SegmentedButtonProps extends React.HTMLProps<HTMLButtonElement> {
+  isBuild?: boolean;
+  innerRef: React.Ref<HTMLElement>;
+}
+
+const SegmentedButtonX: React.SFC<SegmentedButtonProps> = ({ innerRef, isBuild, children, ...props }) => (
+  <button
+    ref={innerRef}
+    {...props}
+    className={`segmented-button__button ${isBuild ? 'segmented-button__button--build' : ''}`}>
+    {children}
+  </button>
+);
+
+const SegmentedButton = React.forwardRef((props, ref) => <SegmentedButtonX innerRef={ref} {...props} />);
+
 const Header2 = () => {
   const hasFlags = false;
 
   return (
     <div className="header2">
       <div className="header2__set header2__set--build">
-        <div className="segmented-button">
-          <button className="segmented-button__button segmented-button__button--build">
-            Build
-                      <BuildIcon />
-          </button>
+        <SegmentedButtonSet>
+          <SegmentedButton isBuild>
+            Build <BuildIcon />
+          </SegmentedButton>
           <PopButton button={BuildMenuButton}>
             <BuildMenu />
           </PopButton>
-        </div>
+        </SegmentedButtonSet>
       </div>
       <div className="header2__set header2__set--channel-mode">
-        <div className="segmented-button">
+        <SegmentedButtonSet>
           <PopButton button={ModeChannelMenuButton}>
             <ModeChannelMenu />
           </PopButton>
           <PopButton button={({ ...p }) => <AdvancedOptionsMenuButton hasFlags={hasFlags} {...p} />}>
             <AdvancedOptionsMenu />
           </PopButton>
-        </div>
+        </SegmentedButtonSet>
       </div>
       <div className="header2__set header2__set--share">
-        <div className="segmented-button">
-          <button className="segmented-button__button" title="Create shareable links to this code">Share</button>
-        </div>
+        <SegmentedButtonSet>
+          <SegmentedButton title="Create shareable links to this code">
+            Share
+          </SegmentedButton>
+        </SegmentedButtonSet>
       </div>
       <div className="header2__set header2__set--tools">
-        <div className="segmented-button">
+        <SegmentedButtonSet>
           <PopButton button={ToolsMenuButton}>
             <ToolsMenu />
           </PopButton>
-        </div>
+        </SegmentedButtonSet>
       </div>
       <div className="header2__set header2__set--config">
-        <div className="segmented-button">
+        <SegmentedButtonSet>
           <PopButton button={ConfigMenuButton}>
             <ConfigMenu />
           </PopButton>
-        </div>
+        </SegmentedButtonSet>
       </div>
       <div className="header2__set header2__set--help">
-        <div className="segmented-button">
-          <button className="segmented-button__button" title="Show help">
+        <SegmentedButtonSet>
+          <SegmentedButton title="Show help">
             <HelpIcon />
-          </button>
-        </div>
+          </SegmentedButton>
+        </SegmentedButtonSet>
       </div>
-    </div>
+    </div >
   )
 };
 
 const BuildMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) => (
-  <button
-    className="segmented-button__button"
-    title="Select what to build"
-    {...popButtonProps}>
+  <SegmentedButton title="Select what to build" {...popButtonProps}>
     <MoreOptionsIcon />
-  </button>
+  </SegmentedButton>
 );
 
 const ModeChannelMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) => (
-  <button
-    className="segmented-button__button"
-    title="Rust version and optimization options"
-    {...popButtonProps}>
-    Options : Debug / Stable
-      <ExpandableIcon />
-  </button>
+  <SegmentedButton title="Rust version and optimization options" {...popButtonProps}>
+    Options : Debug / Stable <ExpandableIcon />
+  </SegmentedButton>
 );
 
 interface AdvancedOptionsMenuButtonProps extends PopButtonEnhancements {
   hasFlags: boolean;
 }
 
-const AdvancedOptionsMenuButton: React.SFC<AdvancedOptionsMenuButtonProps> = ({ hasFlags, popButtonProps }) => {
-  const title = hasFlags ? "Show the configured compilation flags" : "Advanced compilation flags";
-  const classname = "segmented-button__button ${hasFlags ? 'segmented-button__button--modified' : ''}";
-
-  return (
-    <button
-      className={classname}
-      title={title}
-      {...popButtonProps}>
-      <MoreOptionsIcon />
-    </button>
-  );
-}
+const AdvancedOptionsMenuButton: React.SFC<AdvancedOptionsMenuButtonProps> = ({ hasFlags, popButtonProps }) => (
+  <SegmentedButton
+    title={`Advanced compilation flags ${hasFlags ? '(set)' : ''}`}
+    {...popButtonProps}>
+    <MoreOptionsIcon />
+  </SegmentedButton>
+);
 
 const ToolsMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) => (
-  <button
-    className="segmented-button__button"
-    {...popButtonProps}>
-    Tools
-      <ExpandableIcon />
-  </button>
+  <SegmentedButton title="Run extra tools on the source code" {...popButtonProps}>
+    Tools <ExpandableIcon />
+  </SegmentedButton>
 );
 
 const ConfigMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) => (
-  <button
-    className="segmented-button__button"
-    title="Show the configuration options"
-    {...popButtonProps}>
-    Config
-      <ConfigIcon />
-  </button>
+  <SegmentedButton title="Show the configuration options" {...popButtonProps}>
+    Config <ConfigIcon />
+  </SegmentedButton>
 );
 
 const mapStateToProps = (state: State) => {
