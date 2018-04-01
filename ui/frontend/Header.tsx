@@ -52,9 +52,9 @@ const Header: React.SFC<HeaderProps> = props => (
             {props.executionLabel}
           </RightIconButton>
         </SegmentedButton>
-        <PopButton button={BuildMenuButton}>
-          <BuildMenu />
-        </PopButton>
+        <PopButton button={BuildMenuButton}>{({ popButtonClose }) => (
+          <BuildMenu close={popButtonClose} />
+        )}</PopButton>
       </SegmentedButtonSet>
     </HeaderSet>
     <HeaderSet id="channel-mode">
