@@ -580,6 +580,61 @@ $header-transition: 0.2s ease-in-out;
   }
 }
 
+.validate-options {
+  margin-top: 5px;
+  margin-bottom: 0 !important;
+
+  padding-top: 10px;
+  padding-bottom: 13px;
+
+  background: #f4f4f4;
+
+  border-top: 1px solid #cacaca;
+
+  border-bottom-left-radius: $header-border-radius;
+  border-bottom-right-radius: $header-border-radius;
+
+  text-align: center;
+
+  &__button {
+    $bg-light: #fff;
+    $bg-dark: #f9f9f9;
+
+    display: inline-block;
+
+    text-align: center;
+    text-decoration: none;
+
+    text-transform: uppercase;
+    font-weight: 600;
+
+    padding: 8px 15px;
+
+    color: #666;
+
+    border: 1px solid $header-main-border;
+    border-bottom: 1px solid $header-accent-border;
+
+    background: $bg-light;
+    background: linear-gradient($bg-light, $bg-dark);
+    border-radius: $header-border-radius;
+
+    box-shadow: 0 1px 4px -2px rgba(0, 0, 0, 0.6), inset 0 1px 0px white;
+
+    &:hover {
+      background: linear-gradient($bg-light, #f3f3f3);
+    }
+
+    &:active {
+      background: linear-gradient($bg-dark, #ededed);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+
+      border-top-color: #bababa;
+      border-bottom-color: #d6d6d6;
+    }
+  }
+}
+
 @mixin menu-item-title {
   font-size: 13px;
   font-weight: 600;
@@ -604,10 +659,57 @@ $header-transition: 0.2s ease-in-out;
   }
 }
 
+// TODO: add 'menu'?
+.selectable-item {
+  width: 100%;
+  @include button-reset;
+
+  transition: color $header-transition;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__name {
+    @include menu-item-title;
+  }
+
+  &:hover {
+    color: $header-tint;
+  }
+
+  &--selected {
+    font-weight: 600;
+    color: $header-tint;
+  }
+
+  &__checkmark {
+    opacity: 0;
+    transition: opacity $header-transition;
+  }
+
+  &:hover &__checkmark {
+    opacity: 0.5;
+  }
+
+  &--selected &__checkmark,
+  &--selected:hover &__checkmark {
+    opacity: 1;
+  }
+}
+
 .build-menu {
   &__aside {
     margin: 0.25em 0 0 0;
     color: #888;
+  }
+}
+
+.mode-channel-menu {
+  &__description {
+    margin: 0;
   }
 }
 
