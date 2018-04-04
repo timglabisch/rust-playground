@@ -101,6 +101,12 @@ body {
                 @include split-all-children();
             }
         }
+
+        &-automatic > .playground-output:empty {
+            @media screen and (min-width: 1600px) {
+                margin-left: 0;
+            }
+        }
     }
 
     &-editor {
