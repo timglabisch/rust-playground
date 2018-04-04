@@ -694,11 +694,14 @@ $header-transition: 0.2s ease-in-out;
   &__header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
   }
 
   &__name {
     @include menu-item-title;
+  }
+
+  &__description {
+    padding-left: 2em;
   }
 
   &:hover {
@@ -711,12 +714,18 @@ $header-transition: 0.2s ease-in-out;
   }
 
   &__checkmark {
+    position: relative;
+    top: 1px;
+
+    margin-right: 0.5em;
+
     opacity: 0;
-    transition: opacity $header-transition;
+    transition: opacity 0.15s ease-in-out;
   }
 
   &:hover &__checkmark {
     opacity: 0.5;
+    color: $header-tint;
   }
 
   &--selected &__checkmark,

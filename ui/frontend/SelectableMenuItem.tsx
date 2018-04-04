@@ -11,12 +11,12 @@ const SelectableMenuItem: React.SFC<SelectableMenuItemProps> = ({ name, selected
   <MenuItem>
     <button className={`selectable-item ${selected ? 'selectable-item--selected' : ''}`} {...props}>
       <div className="selectable-item__header">
-        <span className="selectable-item__name">{name}</span>
         <span className="selectable-item__checkmark">
           <Icon />
         </span>
+        <span className="selectable-item__name">{name}</span>
       </div>
-      <span className="selectable-item__description">{children}</span>
+      <div className="selectable-item__description">{children}</div>
     </button>
   </MenuItem>
 );
