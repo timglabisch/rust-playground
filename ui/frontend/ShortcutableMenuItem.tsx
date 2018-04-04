@@ -7,12 +7,15 @@ interface ShortcutableMenuItemProps extends React.HTMLProps<HTMLButtonElement> {
   shortcut: string;
 }
 
+// Temporarily stop displaying items' shortcuts, until they are hooked up to the shortcut mechanism
+const TMP_HIDE_SHORTCUTS = true;
+
 const ShortcutableMenuItem: React.SFC<ShortcutableMenuItemProps> = ({ name, shortcut, children, ...props }) => (
   <MenuItem>
     <button className="shortcut-item" {...props}>
       <div className="shortcut-item__header">
         <span className="shortcut-item__name">{name}</span>
-        <kbd className="shortcut-item__shortcut">{shortcut}</kbd>
+        {!TMP_HIDE_SHORTCUTS && <kbd className="shortcut-item__shortcut">{shortcut}</kbd>}
       </div>
       <span className="shortcut-item__description">{children}</span>
     </button>

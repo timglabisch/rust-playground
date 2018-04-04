@@ -2,12 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import {
+  changeChannel,
   performCompileToAssembly,
   performCompileToLLVM,
   performCompileToMir,
   performCompileToWasm,
   performExecute,
 } from './actions';
+
+import { Channel } from './types';
 
 import ButtonMenuItem from './ButtonMenuItem';
 import MenuGroup from './MenuGroup';
@@ -17,6 +20,7 @@ interface BuildMenuProps {
   compileToLLVM: () => any;
   compileToMir: () => any;
   compileToWasm: () => any;
+  switchToNightly: () => any;
   execute: () => any;
   close: () => void;
 }
@@ -24,7 +28,7 @@ interface BuildMenuProps {
 const BuildMenu: React.SFC<BuildMenuProps> = props => (
   <MenuGroup title="What do you want to do?">
     <ButtonMenuItem name="Build" onClick={() => { props.execute(); props.close(); }}>
-      No bells and whistles, regular build coming right up&nbsp;:D
+      No bells and whistles, regular build coming right&nbsp;up&nbsp;:D
     </ButtonMenuItem>
     <ButtonMenuItem name="ASM" onClick={() => { props.compileToAssembly(); props.close(); }}>
       Build and show the resulting assembly code.
@@ -35,7 +39,7 @@ const BuildMenu: React.SFC<BuildMenuProps> = props => (
     <ButtonMenuItem name="MIR" onClick={() => { props.compileToMir(); props.close(); }}>
       Build and show the resulting MIR, Rust's intermediate representation.
     </ButtonMenuItem>
-    <ButtonMenuItem name="WASM" onClick={() => { props.compileToWasm(); props.close(); }}>
+    <ButtonMenuItem name="WASM" onClick={() => { props.switchToNightly(); props.compileToWasm(); props.close(); }}>
       Build a WebAssembly module for web browsers, in the .WAT textual representation.
       <p className="build-menu__aside">
         Note: WASM currently requires using the Nightly channel, selecting this
@@ -45,11 +49,16 @@ const BuildMenu: React.SFC<BuildMenuProps> = props => (
   </MenuGroup >
 );
 
+function performSwitchToNightly() {
+  return changeChannel(Channel.Nightly);
+}
+
 const mapDispatchToProps = ({
   compileToAssembly: performCompileToAssembly,
   compileToLLVM: performCompileToLLVM,
   compileToMir: performCompileToMir,
   compileToWasm: performCompileToWasm,
+  switchToNightly: performSwitchToNightly,
   execute: performExecute,
 });
 

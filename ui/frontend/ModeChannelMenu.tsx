@@ -42,8 +42,7 @@ const ModeChannelMenu: React.SFC<ModeChannelMenuProps> = props => (
         thisValue={Channel.Stable}
         changeValue={props.changeChannel}
       >
-        <Desc>Build using the Stable version:</Desc>
-        <Desc>{props.stableVersion}</Desc>
+        <Desc>Build using the Stable version: {props.stableVersion || "1.25.0"}</Desc>
       </SelectOne>
       <SelectOne
         name="Beta channel"
@@ -51,8 +50,7 @@ const ModeChannelMenu: React.SFC<ModeChannelMenuProps> = props => (
         thisValue={Channel.Beta}
         changeValue={props.changeChannel}
       >
-        <Desc>Build using the Beta version:</Desc>
-        <Desc>{props.betaVersion}</Desc>
+        <Desc>Build using the Beta version: {props.betaVersion || "1.26.0-beta.1 (2018-04-03 18aaa1d…)"}</Desc>
       </SelectOne>
       <SelectOne
         name="Nightly channel"
@@ -60,11 +58,10 @@ const ModeChannelMenu: React.SFC<ModeChannelMenuProps> = props => (
         thisValue={Channel.Nightly}
         changeValue={props.changeChannel}
       >
-        <Desc>Build using the Nightly version:</Desc>
-        <Desc>{props.nightlyVersion}</Desc>
+        <Desc>Build using the Nightly version: {props.nightlyVersion || "1.27.0-nightly (2018-04-03 637ac17…)"}</Desc>
       </SelectOne>
     </MenuGroup>
-    <ValidateOptions onClick={props.close}>Set these options</ValidateOptions>
+    {/* <ValidateOptions onClick={props.close}>Set these options</ValidateOptions> */}
   </Fragment>
 );
 
