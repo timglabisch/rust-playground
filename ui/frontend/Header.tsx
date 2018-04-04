@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import AdvancedOptionsMenu from './AdvancedOptionsMenu';
 import BuildMenu from './BuildMenu';
 import ConfigMenu from './ConfigMenu';
 import HeaderButton, { RightIcon as RightIconButton } from './HeaderButton';
@@ -41,6 +42,7 @@ interface HeaderProps {
   navigateToHelp: () => any;
   execute: () => any;
   gistSave: () => any;
+  hasFlags?: boolean;
 }
 
 const Header: React.SFC<HeaderProps> = props => (
@@ -62,6 +64,9 @@ const Header: React.SFC<HeaderProps> = props => (
         <PopButton button={ModeChannelMenuButton}>{({ popButtonClose }) => (
           <ModeChannelMenu close={popButtonClose} />
         )}</PopButton>
+        <PopButton button={({ ...p }) => <AdvancedOptionsMenuButton hasFlags={props.hasFlags} {...p} />}>
+          <AdvancedOptionsMenu />
+        </PopButton>
       </SegmentedButtonSet>
     </HeaderSet>
     <HeaderSet id="share">
@@ -112,6 +117,18 @@ const BuildMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) =
 const ModeChannelMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) => (
   <SegmentedButton title="Rust version and optimization options" {...popButtonProps}>
     <HeaderButton isExpandable>Options : Debug / Stable</HeaderButton>
+  </SegmentedButton>
+);
+
+interface AdvancedOptionsMenuButtonProps extends PopButtonEnhancements {
+  hasFlags: boolean;
+}
+
+const AdvancedOptionsMenuButton: React.SFC<AdvancedOptionsMenuButtonProps> = ({ hasFlags, popButtonProps }) => (
+  <SegmentedButton
+    title={`Advanced compilation flags ${hasFlags ? '(set)' : ''}`}
+    {...popButtonProps}>
+    <HeaderButton><MoreOptionsIcon /></HeaderButton>
   </SegmentedButton>
 );
 

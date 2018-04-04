@@ -809,6 +809,13 @@ $header-transition: 0.2s ease-in-out;
   }
 }
 
+.advanced-options-menu {
+  &__rustflags {
+    width: 100%;
+    margin-bottom: 9px;
+  }
+}
+
 .header-button {
   height: 3em;
   padding: 0 1.25em;
