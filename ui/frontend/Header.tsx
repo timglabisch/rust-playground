@@ -49,9 +49,9 @@ const Header: React.SFC<HeaderProps> = props => (
         <PopButton button={({ ...p }) => <ModeChannelMenuButton label={props.modeChannelLabel} {...p} />}>{({ popButtonClose }) => (
           <ModeChannelMenu close={popButtonClose} />
         )}</PopButton>
-        <PopButton button={({ ...p }) => <AdvancedOptionsMenuButton hasFlags={props.hasFlags} {...p} />}>
+        {/* <PopButton button={({ ...p }) => <AdvancedOptionsMenuButton hasFlags={props.hasFlags} {...p} />}>
           <AdvancedOptionsMenu />
-        </PopButton>
+        </PopButton> */}
       </SegmentedButtonSet>
     </HeaderSet>
     <HeaderSet id="share">
