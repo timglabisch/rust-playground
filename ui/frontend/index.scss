@@ -801,6 +801,10 @@ $header-transition: 0.2s ease-in-out;
         border-left: $border;
         border-radius: 0 $header-border-radius $header-border-radius 0;
       }
+
+      &:hover {
+        background: hsla(208, 100%, 43%, 0.1);
+      }
     }
 
     :checked + label {
