@@ -39,6 +39,7 @@ import { Channel, Mode } from './types';
 
 interface HeaderProps {
   executionLabel: string;
+  modeChannelLabel: string;
   navigateToHelp: () => any;
   execute: () => any;
   gistSave: () => any;
@@ -61,7 +62,7 @@ const Header: React.SFC<HeaderProps> = props => (
     </HeaderSet>
     <HeaderSet id="channel-mode">
       <SegmentedButtonSet>
-        <PopButton button={ModeChannelMenuButton}>{({ popButtonClose }) => (
+        <PopButton button={({ ...p }) => <ModeChannelMenuButton label={props.modeChannelLabel} {...p} />}>{({ popButtonClose }) => (
           <ModeChannelMenu close={popButtonClose} />
         )}</PopButton>
         <PopButton button={({ ...p }) => <AdvancedOptionsMenuButton hasFlags={props.hasFlags} {...p} />}>
@@ -114,9 +115,13 @@ const BuildMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) =
   </SegmentedButton>
 );
 
-const ModeChannelMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) => (
+interface ModeChannelMenuButtonProps extends PopButtonEnhancements {
+  label: string;
+}
+
+const ModeChannelMenuButton: React.SFC<ModeChannelMenuButtonProps> = ({ label, popButtonProps }) => (
   <SegmentedButton title="Rust version and optimization options" {...popButtonProps}>
-    <HeaderButton isExpandable>Options : Debug / Stable</HeaderButton>
+    <HeaderButton isExpandable>{label}</HeaderButton>
   </SegmentedButton>
 );
 
@@ -144,8 +149,15 @@ const ConfigMenuButton: React.SFC<PopButtonEnhancements> = ({ popButtonProps }) 
   </SegmentedButton>
 );
 
+// TODO: make this a selector ?
+const getModeChannelLabel = (state: State) => {
+  const { configuration: { channel, mode } } = state;
+  return `Options : ${mode} / ${channel}`;
+}
+
 const mapStateToProps = (state: State) => ({
   executionLabel: getExecutionLabel(state),
+  modeChannelLabel: getModeChannelLabel(state),
   navigateToHelp,
 });
 
