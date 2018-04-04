@@ -116,7 +116,7 @@ const ConfigMenu: React.SFC<ConfigMenuProps> = props => (
       />
     </MenuGroup>
 
-    <ValidateOptions onClick={props.close}>Done configuring!</ValidateOptions>
+    {/* <ValidateOptions onClick={props.close}>Done configuring!</ValidateOptions> */}
   </Fragment>
 );
 

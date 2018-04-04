@@ -64,7 +64,7 @@ const ModeChannelMenu: React.SFC<ModeChannelMenuProps> = props => (
         <Desc>{props.nightlyVersion}</Desc>
       </SelectOne>
     </MenuGroup>
-    <ValidateOptions onClick={props.close}>Set these options</ValidateOptions>
+    {/* <ValidateOptions onClick={props.close}>Set these options</ValidateOptions> */}
   </Fragment>
 );
 
