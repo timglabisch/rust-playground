@@ -12,30 +12,14 @@ import { SegmentedButton, SegmentedButtonSet, SegmentedLink } from './SegmentedB
 import ToolsMenu from './ToolsMenu';
 
 import {
-  changeChannel,
-  changeMode,
   navigateToHelp,
-  performClippy,
-  performCompileToAssembly,
-  performCompileToLLVM,
-  performCompileToMir,
-  performCompileToWasm,
   performExecute,
-  performFormat,
   performGistSave,
-  toggleConfiguration,
 } from './actions';
 import {
-  betaVersionText,
-  getCrateType,
   getExecutionLabel,
-  isWasmAvailable,
-  nightlyVersionText,
-  runAsTest,
-  stableVersionText,
 } from './selectors';
 import State from './state';
-import { Channel, Mode } from './types';
 
 interface HeaderProps {
   executionLabel: string;
