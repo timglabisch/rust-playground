@@ -128,7 +128,7 @@ const AdvancedOptionsMenuButton: React.SFC<AdvancedOptionsMenuButtonProps> = ({ 
   <SegmentedButton
     title={`Advanced compilation flags ${hasFlags ? '(set)' : ''}`}
     {...popButtonProps}>
-    <HeaderButton><MoreOptionsIcon /></HeaderButton>
+    <HeaderButton icon={<MoreOptionsIcon />} />
   </SegmentedButton>
 );
 
