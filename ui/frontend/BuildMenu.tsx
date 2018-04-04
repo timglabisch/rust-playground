@@ -28,7 +28,7 @@ interface BuildMenuProps {
 const BuildMenu: React.SFC<BuildMenuProps> = props => (
   <MenuGroup title="What do you want to do?">
     <ButtonMenuItem name="Build" onClick={() => { props.execute(); props.close(); }}>
-      No bells and whistles, regular build coming right up&nbsp;:D
+      No bells and whistles, regular build coming right&nbsp;up&nbsp;:D
     </ButtonMenuItem>
     <ButtonMenuItem name="ASM" onClick={() => { props.compileToAssembly(); props.close(); }}>
       Build and show the resulting assembly code.
