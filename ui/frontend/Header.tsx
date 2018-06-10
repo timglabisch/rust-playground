@@ -64,32 +64,11 @@ const Header: React.SFC<HeaderProps> = props => (
           )}</PopButton>
       </SegmentedButtonSet>
     </HeaderSet>
-    <HeaderSet id="share">
-      <SegmentedButtonSet>
-        <SegmentedButton title="Create shareable links to this code" onClick={props.gistSave}>
-          <HeaderButton >Share</HeaderButton>
-        </SegmentedButton>
-      </SegmentedButtonSet>
-    </HeaderSet>
     <HeaderSet id="tools">
       <SegmentedButtonSet>
         <PopButton button={ToolsMenuButton}>{({ popButtonClose }) => (
           <ToolsMenu close={popButtonClose} />
         )}</PopButton>
-      </SegmentedButtonSet>
-    </HeaderSet>
-    <HeaderSet id="config">
-      <SegmentedButtonSet>
-        <PopButton button={ConfigMenuButton}>{({ popButtonClose }) => (
-          <ConfigMenu close={popButtonClose} />
-        )}</PopButton>
-      </SegmentedButtonSet>
-    </HeaderSet>
-    <HeaderSet id="help">
-      <SegmentedButtonSet>
-        <SegmentedLink title="View help" action={props.navigateToHelp}>
-          <HeaderButton icon={<HelpIcon />} />
-        </SegmentedLink>
       </SegmentedButtonSet>
     </HeaderSet>
   </div >

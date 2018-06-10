@@ -73,6 +73,13 @@ body {
         right: 3px;
     }
 
+
+    .output {
+      code {
+        font-size: 22px !important;
+      }
+    }
+
     #editor {
         @include body-monospace-presentation;
     }
